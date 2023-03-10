@@ -2,6 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
 import routes from './routes/routes.js'
+import dbConnect from './config/mongo.js'
 
 const app = express()
 
@@ -17,3 +18,4 @@ app.listen(PORT, () => {
 })
 
 routes(app)
+dbConnect()
