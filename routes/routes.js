@@ -1,4 +1,4 @@
-import { createImage } from '../controllers/openaiControllers'
+import { createImage } from '../controllers/openaiControllers.js'
 
 const routes = app => {
 

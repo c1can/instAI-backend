@@ -1,4 +1,4 @@
-import { openai } from '../config/openai'
+import openai from '../config/openai.js'
 
 export const createImage = async(req, res) => {
 
@@ -12,12 +12,12 @@ export const createImage = async(req, res) => {
         })
 
         const { data } = response
-        const img64 = data[0]
-        
-        res.status(200).json({ success: img64 })
+        const img64 = data.data[0]
+        const { b64_json: image_64 } = img64
+        res.status(200).json({ image:  image_64})
         
     } catch (error) {
-        res.json({error: error  })
+        res.status(400).json({error: error})
     }
 
 }
