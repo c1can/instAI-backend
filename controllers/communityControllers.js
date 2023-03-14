@@ -14,6 +14,7 @@ export const getPosts = async(req, res) => {
     }
 }
 
+//add validation when user share an already shared image
 export const addPost = async(req, res) => {
     const {prompt, user, image} = req.body
 
