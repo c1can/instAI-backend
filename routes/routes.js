@@ -1,4 +1,5 @@
 import { createImage } from '../controllers/openaiControllers.js'
+import { addPost, getPosts } from '../controllers/communityControllers.js'
 
 const routes = app => {
 
@@ -6,12 +7,10 @@ const routes = app => {
 
     //OPENAI ROUTES
     app.post('/create', createImage)
+
     //DB
-    //ENVIARE EN BASE64 LA FOTO AL HOST DE CLOUDINARY Y LUEGO ENVIARE A MI DB LA URL QUE ME GENERE CLOUDINARAY
-
-    //POST
-    //GET
-
+    app.get('/community', getPosts)
+    app.post('/community-share', addPost)
 }
 
 export default routes

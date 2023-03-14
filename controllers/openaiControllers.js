@@ -14,10 +14,10 @@ export const createImage = async(req, res) => {
         const { data } = response
         const img64 = data.data[0]
         const { b64_json: image_64 } = img64
-        res.status(200).json({ image:  image_64})
+        res.status(200).json({ image: image_64})
         
     } catch (error) {
-        res.status(400).json({error: error})
+        res.status(400).json({ error: error })
     }
 
 }
