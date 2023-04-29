@@ -16,19 +16,20 @@ export const getPosts = async(req, res) => {
 
 //add validation when user share an already shared image
 export const addPost = async(req, res) => {
-    const {prompt, user, image} = req.body
+    const {prompt, user, avatar, image} = req.body //---> input state
 
     if(prompt == '' && user == '' && image == '') {
         return res.status(400).json({ error: 'something went wrong' })
     }
 
     try {
-        const result = await cloudinary.uploader.upload(image)
+        const { url } = await cloudinary.uploader.upload(image)
 
         const newPost = new Post({
             user,
             prompt,
-            image: result.url
+            avatar,
+            image: url
         })
 
         await newPost.save()
