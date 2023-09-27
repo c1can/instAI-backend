@@ -39,3 +39,16 @@ export const addPost = async(req, res) => {
         res.status(400).json({ error: 'error' })
     }
 }
+
+export const editPost = async(req, res) => {
+
+    const { actualUsername, newUsername } = req.body
+
+    try {
+        const updated = await Post.updateMany({user: actualUsername}, {user: newUsername})
+        res.status(200).json(updated)
+    } catch (error) {
+        res.status(400).json({error: 'error'})
+    }
+
+}
